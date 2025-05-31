@@ -47,7 +47,16 @@ namespace Eco.Mods.SmartTax
                 // e.g. if someone who isn't a citizen comes along and chops a tree inside the settlement boundaries and we try to tax someone...
                 // ...extend the jurisdiction (which normally only covers citizens of the settlement) to include the tree chopper too
                 result.Add(userGameAction.Citizen);
+
+                // The `Company Legal Person` of the initiator is also considered in-jurisdiction for the duration of the law
+                User companyLegalPerson = SmartTaxCompany.GetLegalPersonForEmployee(userGameAction.Citizen);
+                if(companyLegalPerson != null)
+                {
+                    // Logger.Debug($"{userGameAction.Citizen.Name}'s employer is {companyLegalPerson.Name} and is considered in-jurisidcation for a law...");
+                    result.Add(companyLegalPerson);
+                }
             }
+
             if (context is IWorldObjectGameAction worldObjectGameAction && worldObjectGameAction.WorldObject?.Owners != null)
             {
                 // The owner of the world object is considered in-jurisdiction for the duration of the law
