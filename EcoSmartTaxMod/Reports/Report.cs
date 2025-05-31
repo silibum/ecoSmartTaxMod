@@ -8,11 +8,11 @@ namespace Eco.Mods.SmartTax.Reports
     using Gameplay.Economy;
     using Gameplay.Settlements;
 
+    using Shared.Time;
+    using Simulation.Time;
     using Shared.Serialization;
     using Shared.Localization;
-    using Shared.Time;
 
-    using Simulation.Time;
 
     public readonly struct ReportInterval : IEquatable<ReportInterval>
     {

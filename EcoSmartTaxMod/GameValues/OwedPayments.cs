@@ -2,18 +2,18 @@
 
 namespace Eco.Mods.SmartTax
 {
-    using Core.Controller;
     using Core.Utils;
+    using Core.Controller;
     using Core.Utils.PropertyScanning;
 
-    using Shared.Localization;
-    using Shared.Networking;
     using Shared.Utils;
+    using Shared.Networking;
+    using Shared.Localization;
 
-    using Gameplay.Civics.GameValues;
     using Gameplay.Economy;
-    using Gameplay.Systems.TextLinks;
     using Gameplay.Players;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Civics.GameValues;
 
     [Eco, LocCategory("Citizens"), LocDescription("How much in payment a citizen is owed from a particular Government Account.")]
     public class OwedPayments : GameValue<float>

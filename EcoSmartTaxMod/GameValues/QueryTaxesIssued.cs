@@ -1,19 +1,17 @@
-﻿using System;
-
-namespace Eco.Mods.SmartTax
+﻿namespace Eco.Mods.SmartTax
 {
-    using Core.Controller;
     using Core.Utils;
+    using Core.Controller;
     using Core.Utils.PropertyScanning;
 
-    using Shared.Localization;
-    using Shared.Networking;
     using Shared.Utils;
+    using Shared.Networking;
+    using Shared.Localization;
 
-    using Gameplay.Civics.GameValues;
+    using Gameplay.Aliases;
     using Gameplay.Economy;
     using Gameplay.Systems.TextLinks;
-    using Gameplay.Aliases;
+    using Gameplay.Civics.GameValues;
 
     [Eco, LocCategory("Citizens"), LocDescription("How much in taxes a citizen has been issued over a given interval.")]
     public class QueryTaxesIssued : IntervalGameValue

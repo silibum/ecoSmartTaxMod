@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Eco.Mods.SmartTax
@@ -62,9 +61,7 @@ namespace Eco.Mods.SmartTax
 
         public override void OnLinkClicked(TooltipOrigin origin, TooltipClickContext clickContext, User user) => OpenReport(user.Player);
 
-
         [NewTooltip(CacheAs.Disabled, 100)]
-        public LocString Tooltip()
-            => Report.TotalReport.Description;
+        public LocString Tooltip() => Report.TotalReport.Description;
     }
 }

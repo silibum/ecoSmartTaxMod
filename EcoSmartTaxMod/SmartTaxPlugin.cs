@@ -1,24 +1,20 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
 namespace Eco.Mods.SmartTax
 {
-    using Core.Plugins.Interfaces;
     using Core.Utils;
     using Core.Utils.Threading;
+
     using Core.Systems;
-    using Core.Serialization;
     using Core.Plugins;
+    using Core.Serialization;
+    using Core.Plugins.Interfaces;
 
-    using Shared.Localization;
     using Shared.Utils;
+    using Shared.Localization;
     using Shared.Serialization;
-
-    using Gameplay.Players;
 
     using Simulation.Time;
 

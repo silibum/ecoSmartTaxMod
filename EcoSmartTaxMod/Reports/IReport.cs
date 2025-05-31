@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace Eco.Mods.SmartTax.Reports
+﻿namespace Eco.Mods.SmartTax.Reports
 {
-    using Gameplay.Settlements;
     using Gameplay.Economy;
+    using Gameplay.Settlements;
 
     using Shared.Localization;
 

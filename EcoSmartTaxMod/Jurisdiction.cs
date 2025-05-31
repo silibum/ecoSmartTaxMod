@@ -1,23 +1,22 @@
-﻿using System;
+﻿using System.Linq;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Eco.Mods.SmartTax
 {
-    using Core.Utils.PropertyScanning;
-
-    using Gameplay.Economy;
     using Gameplay.Aliases;
-    using Gameplay.GameActions;
+    using Gameplay.Economy;
     using Gameplay.Players;
+    using Gameplay.GameActions;
     using Gameplay.Settlements;
     using Gameplay.Systems;
     using Gameplay.Systems.NewTooltip;
 
-    using Shared.Items;
-    using Shared.Localization;
     using Shared.Math;
     using Shared.Utils;
+    using Shared.Items;
+    using Shared.Localization;
+
+    using Core.Utils.PropertyScanning;
 
     public readonly struct Jurisdiction
     {
@@ -48,7 +47,16 @@ namespace Eco.Mods.SmartTax
                 // e.g. if someone who isn't a citizen comes along and chops a tree inside the settlement boundaries and we try to tax someone...
                 // ...extend the jurisdiction (which normally only covers citizens of the settlement) to include the tree chopper too
                 result.Add(userGameAction.Citizen);
+
+                // The `Company Legal Person` of the initiator is also considered in-jurisdiction for the duration of the law
+                User companyLegalPerson = SmartTaxCompany.GetLegalPersonForEmployee(userGameAction.Citizen);
+                if(companyLegalPerson != null)
+                {
+                    // Logger.Debug($"{userGameAction.Citizen.Name}'s employer is {companyLegalPerson.Name} and is considered in-jurisidcation for a law...");
+                    result.Add(companyLegalPerson);
+                }
             }
+
             if (context is IWorldObjectGameAction worldObjectGameAction && worldObjectGameAction.WorldObject?.Owners != null)
             {
                 // The owner of the world object is considered in-jurisdiction for the duration of the law
@@ -67,20 +75,15 @@ namespace Eco.Mods.SmartTax
                 )
                 : Global;
 
-        public bool TestPosition(Vector2i pos)
-            => IsGlobal || (Settlement?.Influences(pos) ?? false);
+        public bool TestPosition(Vector2i pos) => IsGlobal || (Settlement?.Influences(pos) ?? false);
 
-        public bool TestPosition(Vector3i pos)
-            => TestPosition(pos.XZ);
+        public bool TestPosition(Vector3i pos) => TestPosition(pos.XZ);
 
-        public bool TestCitizen(User user)
-            => IsGlobal || (Settlement?.Citizens.Contains(user) ?? false) || (AdditionalCitizens?.Contains(user) ?? false);
+        public bool TestCitizen(User user) => IsGlobal || (Settlement?.Citizens.Contains(user) ?? false) || (AdditionalCitizens?.Contains(user) ?? false);
 
-        public bool TestAccount(BankAccount bankAccount)
-            => IsGlobal || bankAccount.Settlement == Settlement;
+        public bool TestAccount(BankAccount bankAccount) => IsGlobal || bankAccount.Settlement == Settlement;
 
-        public override string ToString()
-            => IsGlobal ? "global" : Settlement != null ? Settlement.MarkedUpName : "none";
+        public override string ToString() => IsGlobal ? "global" : Settlement != null ? Settlement.MarkedUpName : "none";
     }
 
     public static class JurisdictionExt
