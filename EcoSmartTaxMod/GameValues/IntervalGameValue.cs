@@ -2,12 +2,11 @@
 
 namespace Eco.Mods.SmartTax
 {
-    using Core.Controller;
     using Core.Utils;
     using Core.Utils.PropertyScanning;
 
-    using Shared.Localization;
     using Shared.Networking;
+    using Shared.Localization;
 
     using Gameplay.Civics.GameValues;
     using Gameplay.Civics.GameValues.Values;

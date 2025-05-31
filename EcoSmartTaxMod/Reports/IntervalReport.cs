@@ -1,16 +1,15 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace Eco.Mods.SmartTax.Reports
 {
     using Core.Utils;
 
     using Gameplay.Economy;
-    using Gameplay.Economy.Transfer;
     using Gameplay.Settlements;
+    using Gameplay.Economy.Transfer;
 
-    using Shared.Serialization;
     using Shared.Localization;
+    using Shared.Serialization;
 
     [Serialized]
     public class IntervalReport : IReport

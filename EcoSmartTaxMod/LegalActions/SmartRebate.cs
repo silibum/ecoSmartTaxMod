@@ -1,28 +1,27 @@
-﻿using System;
+﻿using System.Linq;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Eco.Mods.SmartTax
 {
-    using Core.Controller;
     using Core.Utils;
+    using Core.Controller;
     using Core.Utils.PropertyScanning;
 
-    using Shared.Localization;
-    using Shared.Networking;
     using Shared.Utils;
+    using Shared.Networking;
+    using Shared.Localization;
 
     using Gameplay.Civics;
-    using Gameplay.Civics.GameValues;
-    using Gameplay.Civics.Laws;
-    using Gameplay.Economy;
-    using Gameplay.Economy.Transfer;
-    using Gameplay.GameActions;
-    using Gameplay.Civics.Laws.ExecutiveActions;
     using Gameplay.Aliases;
-    using Gameplay.Systems.TextLinks;
+    using Gameplay.Economy;
     using Gameplay.Players;
+    using Gameplay.GameActions;
     using Gameplay.Settlements;
+    using Gameplay.Civics.Laws;
+    using Gameplay.Economy.Transfer;
+    using Gameplay.Civics.GameValues;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Civics.Laws.ExecutiveActions;
 
     [Eco, LocCategory("Finance"), CreateComponentTabLoc("Smart Tax", IconName = "Tax"), LocDisplayName("Smart Rebate"), HasIcon("Tax_LegalAction"), LocDescription("Issues a rebate which is used to forgive some amount of future or present tax debt.")]
     public class SmartRebate_LegalAction : LegalAction, ICustomValidity, IExecutiveAction

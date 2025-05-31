@@ -1,6 +1,5 @@
-﻿using System;
+﻿using System.Linq;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Eco.Mods.SmartTax
 {
@@ -8,21 +7,26 @@ namespace Eco.Mods.SmartTax
     using Core.Utils;
     using Core.Utils.PropertyScanning;
 
-    using Shared.Localization;
-    using Shared.Networking;
     using Shared.Utils;
+    using Shared.Networking;
+    using Shared.Localization;
+
+    using Gameplay.Systems.TextLinks;
 
     using Gameplay.Civics;
     using Gameplay.Civics.GameValues;
+
     using Gameplay.Civics.Laws;
     using Gameplay.Civics.Laws.ExecutiveActions;
+
     using Gameplay.Economy;
     using Gameplay.Economy.Transfer;
-    using Gameplay.GameActions;
+
     using Gameplay.Aliases;
-    using Gameplay.Systems.TextLinks;
     using Gameplay.Players;
+
     using Gameplay.Settlements;
+    using Gameplay.GameActions;
 
     [Eco, LocCategory("Finance"), CreateComponentTabLoc("Smart Pay", IconName = "Pay"), LocDisplayName("Smart Pay"), HasIcon("Pay_LegalAction"), LocDescription("A smarter payment that tracks credit if the payer can't afford it.")]
     public class SmartPay_LegalAction : LegalAction, ICustomValidity, IExecutiveAction

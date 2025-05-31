@@ -6,17 +6,16 @@ namespace Eco.Mods.SmartTax
 {
     using Core.Utils;
 
-    using Gameplay.Civics.GameValues;
-    using Gameplay.Settlements;
-    using Gameplay.Systems;
-    using Gameplay.Systems.TextLinks;
     using Gameplay.Economy;
+    using Gameplay.Systems;
+    using Gameplay.Settlements;
+    using Gameplay.Systems.TextLinks;
+    using Gameplay.Civics.GameValues;
 
+    using Shared.Utils;
+    using Simulation.Time;
     using Shared.Localization;
     using Shared.Serialization;
-    using Shared.Utils;
-
-    using Simulation.Time;
 
     [Serialized]
     public abstract class TaxEvent

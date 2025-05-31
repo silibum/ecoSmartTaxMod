@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Eco.Mods.SmartTax
+﻿namespace Eco.Mods.SmartTax
 {
     using Gameplay.Players;
     using Gameplay.Economy;
